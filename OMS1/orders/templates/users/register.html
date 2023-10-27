@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Register Page{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<style>
+h3{
+    color: red;
+}
+</style>
+{% for message in messages %}
+<h3>{{ message }}</h3>
+{% endfor %}
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3">
+        <div class="border p-3 bg-white">
+            <h4>Register Page</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="username"/>
+                <p>Username:</p>
+                <input type="text" name="name"/>
+                <p>Name:</p>
+                <input type="email" name="email"/>
+                <p>Email:</p>
+                <input type="password" name="password"/>
+                <p>Password:</p>
+                <input type="password" name="password_confirmation"/>
+                <p>Password_confirmation:</p><br>
+                <input class="btn btn-success" type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

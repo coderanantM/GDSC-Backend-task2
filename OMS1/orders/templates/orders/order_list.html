@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block 'title' %}Order List{% endblock %}
+{% block body %}
+<a href="{% url 'order_create' %}">Create Order</a><br><br>
+
+<form action="" method="get">
+	<input type="text" name="search" value="{{ request.GET.search }}">
+	<input type="submit" value="Search">
+</form>
+
+<table border="1" style="width: 100%">
+    {% for order in object_list %}
+    <tr>
+	<td>{{ order.order_name }}</td>
+	<td>{{ order.quantity }}</td>
+	<td>{{ order.date }}</td>
+	<td>
+	    <a href="{% url 'order_update' order.id %}">Update</a>
+	    <a href="{% url 'order_delete' order.id %}">Delete</a>
+	</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
